@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Para Abigail ❤️</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to bottom, #ffdde1, #ee9ca7);
+      overflow-x: hidden;
+      text-align: center;
+    }
+
+    h1 {
+      margin-top: 20px;
+      color: #b3005e;
+      font-size: 2.5rem;
+    }
+
+    .mensaje {
+      font-size: 1.6rem;
+      color: #7a003c;
+      margin-bottom: 15px;
+    }
+
+    .contador {
+      font-size: 1.8rem;
+      background: white;
+      display: inline-block;
+      padding: 18px 35px;
+      border-radius: 25px;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.25);
+      margin-bottom: 25px;
+      animation: latido 2s infinite;
+    }
+
+    @keyframes latido {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+
+    /* Árbol */
+    .arbol {
+      position: relative;
+      width: 300px;
+      height: 420px;
+      margin: 0 auto;
+    }
+
+    .tronco {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 65px;
+      height: 170px;
+      background: linear-gradient(#9b6234, #6f3f1d);
+      border-radius: 25px;
+    }
+
+    .copa {
+      position: absolute;
+      bottom: 140px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 280px;
+      height: 230px;
+    }
+
+    .corazon {
+      position: absolute;
+      color: #ff2f6d;
+      font-size: 26px;
+      animation: flotar 5s infinite ease-in-out;
+    }
+
+    @keyframes flotar {
+      0% { transform: translateY(0); opacity: 0.9; }
+      50% { transform: translateY(-18px); }
+      100% { transform: translateY(0); opacity: 1; }
+    }
+
+    /* Corazones cayendo */
+    .lluvia {
+      position: fixed;
+      top: -10px;
+      color: #ff4d88;
+      font-size: 20px;
+      animation: caer linear infinite;
+      pointer-events: none;
+    }
+
+    @keyframes caer {
+      to { transform: translateY(110vh); }
+    }
+
+    .pregunta {
+      margin: 30px 15px;
+      font-size: 1.8rem;
+      color: #5a002a;
+      font-weight: bold;
+    }
+
+    footer {
+      margin: 25px 0 40px;
+      color: #5a002a;
+      font-size: 1.2rem;
+    }
+
+    audio { display: none; }
+  </style>
+</head>
+<body>
+
+  <h1>❤️ Nuestro Amor ❤️</h1>
+  <div class="mensaje">Te amo mucho Abigail</div>
+
+  <div class="contador" id="contador"></div>
+
+  <div class="arbol">
+    <div class="copa" id="copa"></div>
+    <div class="tronco"></div>
+  </div>
+
+  <div class="pregunta">¿Quieres seguir contando conmigo? 💍</div>
+
+  <footer>
+    Feliz San Valentín 💖
+  </footer>
+
+  <audio autoplay loop>
+    <source src="https://cdn.pixabay.com/audio/2022/03/15/audio_9c7a98d9e1.mp3" type="audio/mpeg">
+  </audio>
+
+  <script>
+    /* Contador en tiempo real */
+    const fechaInicio = new Date('2023-02-14');
+    const contador = document.getElementById('contador');
+
+    function actualizarContador() {
+      const ahora = new Date();
+      const diff = ahora - fechaInicio;
+      const dias = Math.floor(diff / (1000 * 60 * 60 * 24));
+      contador.innerHTML = `⏳ ${dias} días juntos`;
+    }
+    actualizarContador();
+    setInterval(actualizarContador, 1000);
+
+    /* Árbol de corazones */
+    const copa = document.getElementById('copa');
+    for (let i = 0; i < 45; i++) {
+      const corazon = document.createElement('div');
+      corazon.className = 'corazon';
+      corazon.innerHTML = '❤';
+      corazon.style.left = Math.random() * 240 + 'px';
+      corazon.style.top = Math.random() * 190 + 'px';
+      corazon.style.animationDelay = Math.random() * 3 + 's';
+      copa.appendChild(corazon);
+    }
+
+    /* Lluvia de corazones */
+    function crearLluvia() {
+      const c = document.createElement('div');
+      c.className = 'lluvia';
+      c.innerHTML = '❤';
+      c.style.left = Math.random() * 100 + 'vw';
+      c.style.animationDuration = (Math.random() * 3 + 4) + 's';
+      document.body.appendChild(c);
+      setTimeout(() => c.remove(), 7000);
+    }
+    setInterval(crearLluvia, 400);
+  </script>
+
+</body>
+</html>
