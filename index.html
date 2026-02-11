@@ -246,8 +246,29 @@
         margin: 20px 10px;
         padding: 15px;
       }
-    }
-  </style>
+    }/* 🌳 RAMAS DEL ÁRBOL */
+.rama {
+  position: absolute;
+  width: 90px;
+  height: 18px;
+  background: linear-gradient(to right, #5a2e0f, #8b4513);
+  border-radius: 20px;
+  top: 280px;
+  z-index: 1;
+}
+
+.rama-izq {
+  left: 90px;
+  transform: rotate(-30deg);
+}
+
+.rama-der {
+  right: 90px;
+  transform: rotate(30deg);
+}
+
+  </style>/
+
 </head>
 <body>
   
@@ -297,6 +318,7 @@
   <audio id="audio" loop>
     <source src="https://cdn.pixabay.com/audio/2022/03/15/audio_9c7a98d9e1.mp3" type="audio/mpeg">
   </audio>
+  
 
   <script>
     const audioElement = document.getElementById('audio');
@@ -397,13 +419,6 @@
 
     setInterval(crearLluvia, 500);
 
-    window.addEventListener('click', () => {
-      if (!isPlaying) {
-        audioElement.play().catch(() => {
-          console.log('Auto-play bloqueado por el navegador');
-        });
-      }
-    }, { once: true });
     document.body.addEventListener('click', () => {
   if (!isPlaying) {
     audioElement.play().then(() => {
