@@ -404,6 +404,15 @@
         });
       }
     }, { once: true });
+    document.body.addEventListener('click', () => {
+  if (!isPlaying) {
+    audioElement.play().then(() => {
+      musicButton.textContent = '⏸️ Pausar Música';
+      isPlaying = true;
+    }).catch(() => {});
+  }
+}, { once: true });
+
   </script>
 
 </body>
