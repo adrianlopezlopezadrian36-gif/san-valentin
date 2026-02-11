@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Para Abigail ❤️ - Feliz San Valentín</title>
+  <title>Para Abigail ❤️ - Feliz San Valentín Abigail</title>
   <style>
     * {
       margin: 0;
@@ -276,13 +276,15 @@
     </div>
   </div>
 
-  <div class="arbol-container">
-    <div class="arbol">
-      <div class="copa" id="copa"></div>
-      <div class="tronco"></div>
-    </div>
-  </div>
+<div class="arbol">
+  <div class="copa" id="copa"></div>
 
+  <div class="rama rama-izq"></div>
+  <div class="rama rama-der"></div>
+
+  <div class="tronco"></div>
+</div>
+  
   <div class="pregunta">Que este año me des un Hijo mamy 💍</div>
 
   <footer>
@@ -356,8 +358,8 @@
         y = (Math.random() - 0.5) * 160;
       }
 
-      corazon.style.left = (150 + x) + 'px';
-      corazon.style.top = (100 + y) + 'px';
+      corazon.style.left = (280 + x) + 'px';
+      corazon.style.top = (150 + y) + 'px';
       corazon.style.animationDelay = Math.random() * 3 + 's';
 
       corazon.addEventListener('click', (e) => {
