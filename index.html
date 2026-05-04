@@ -174,19 +174,27 @@ function moverNo() {
 
 // RESPUESTA SÍ
 function respuestaSi() {
-  document.body.innerHTML = "<h1 style='margin-top:50px;color:#b3005e;'>💖 Sabía que dirías que sí 😍💍</h1><h2>Te quiero muchísimo ❤️</h2>";
+  document.body.innerHTML = `
+    <h1 style="margin-top:40px; color:#b3005e;">
+      💖 Sabía que dirías que sí 😍💍
+    </h1>
 
-  setInterval(()=>{
-    const c = document.createElement("div");
-    c.innerHTML="💖";
-    c.style.position="fixed";
-    c.style.left=Math.random()*100+"vw";
-    c.style.top="-10px";
-    c.style.fontSize="30px";
-    c.style.animation="caer 4s linear";
-    document.body.appendChild(c);
-    setTimeout(()=>c.remove(),4000);
-  },300);
+    <p style="font-size:1.3rem;">Escríbeme algo bonito 💌</p>
+
+    <textarea id="carta" placeholder="Escribe aquí..." 
+      style="width:80%; max-width:400px; height:100px; border-radius:10px; padding:10px;"></textarea>
+    
+    <br><br>
+
+    <button onclick="guardarTexto()" 
+      style="padding:10px 20px; border:none; border-radius:10px; background:#ff4d88; color:white;">
+      💾 Guardar
+    </button>
+
+    <p id="guardado" style="color:#b3005e; margin-top:10px;"></p>
+  `;
+
+  cargarTexto();
 }
 
 // MÚSICA
@@ -205,7 +213,18 @@ setInterval(()=>{
   document.getElementById("fondo-corazones").appendChild(c);
   setTimeout(()=>c.remove(),7000);
 },400);
+function guardarTexto() {
+  const texto = document.getElementById("carta").value;
+  localStorage.setItem("mensajeAmor", texto);
+  document.getElementById("guardado").innerText = "💖 Guardado para siempre";
+}
 
+function cargarTexto() {
+  const texto = localStorage.getItem("mensajeAmor");
+  if (texto) {
+    document.getElementById("carta").value = texto;
+  }
+}
 </script>
 
 </body>
