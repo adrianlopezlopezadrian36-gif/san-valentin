@@ -1,446 +1,155 @@
-<<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Para Abigail ❤️ - Feliz San Valentín Abigail</title>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+<meta charset="UTF-8">
+<title>Para  ❤️</title>
 
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(135deg, #ff6b9d 0%, #ee9ca7 50%, #ffdde1 100%);
-      min-height: 100vh;
-      overflow-x: hidden;
-      text-align: center;
-      position: relative;
-    }
+<style>
+body {
+  margin: 0;
+  text-align: center;
+  font-family: Arial;
+  background: linear-gradient(#ffdde1, #ee9ca7);
+}
 
-    h1 {
-      margin-top: 20px;
-      color: #c2185b;
-      font-size: clamp(1.8rem, 5vw, 3rem);
-      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
-    }
+/* TITULO */
+h1 {
+  margin-top: 40px;
+  color: #b3005e;
+  font-size: 2.5rem;
+}
 
-    .mensaje {
-      font-size: clamp(1.2rem, 4vw, 1.8rem);
-      color: #880e4f;
-      margin: 15px auto;
-      max-width: 90%;
-    }
+/* MENSAJE */
+.mensaje {
+  font-size: 1.3rem;
+  color: #7a003c;
+}
 
-    .contador-container {
-      margin: 30px auto;
-      padding: 20px;
-      background: rgba(255, 255, 255, 0.9);
-      border-radius: 20px;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-      display: inline-block;
-    }
-
-    .contador {
-      font-size: clamp(1.4rem, 3vw, 1.8rem);
-      color: #c2185b;
-      font-weight: bold;
-      margin-bottom: 15px;
-      animation: latido 2s infinite;
-    }
-
-    .contador-detallado {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
-      gap: 15px;
-      margin-top: 15px;
-    }
-
-    .tiempo-item {
-      background: linear-gradient(135deg, #ff6b9d, #ee9ca7);
-      padding: 12px 8px;
-      border-radius: 12px;
-      color: white;
-      font-weight: bold;
-    }
-
-    .tiempo-numero {
-      font-size: clamp(1.4rem, 3vw, 1.8rem);
-      display: block;
-    }
-
-    .tiempo-label {
-      font-size: 0.8rem;
-      text-transform: uppercase;
-      margin-top: 5px;
-      opacity: 0.9;
-    }
-
-    @keyframes latido {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.08); }
-    }
-
-    .arbol-container {
-      position: relative;
-      width: 100%;
-      max-width: 500px;
-      margin: 30px auto;
-      display: flex;
-      justify-content: center;
-      align-items: flex-end;
-      height: 550px;
-    }
-
-    .arbol {
-      position: relative;
-      width: 400px;
-      height: 450px;
-    }
-
-    .copa {
-      position: absolute;
-      top: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 300px;
-      height: 350px;
-    }
-
-    .corazon {
-      position: absolute;
-      color: #ff2f6d;
-      font-size: 28px;
-      cursor: pointer;
-      transition: transform 0.2s;
-      animation: flotar 5s infinite ease-in-out;
-    }
-
-    .corazon:hover {
-      transform: scale(1.4) !important;
-      filter: drop-shadow(0 0 10px #ff2f6d);
-    }
-
-    .corazon.clicked {
-      animation: explotar 0.6s ease-out;
-    }
-
-    @keyframes flotar {
-      0% { transform: translateY(0); opacity: 0.9; }
-      50% { transform: translateY(-15px); }
-      100% { transform: translateY(0); opacity: 1; }
-    }
-
-    @keyframes explotar {
-      0% { transform: scale(1); opacity: 1; }
-      50% { transform: scale(1.5); opacity: 0.8; }
-      100% { transform: scale(0.5); opacity: 0; }
-    }
-
-    .tronco {
-      position: absolute;
-      bottom: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 50px;
-      height: 120px;
-      background: linear-gradient(to right, #8B4513, #D2691E, #8B4513);
-      border-radius: 10px;
-      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
-      z-index: 0;
-    }
-
-    .lluvia {
-      position: fixed;
-      top: -10px;
-      color: #ff4d88;
-      font-size: 20px;
-      animation: caer linear infinite;
-      pointer-events: none;
-      z-index: 10;
-    }
-
-    @keyframes caer {
-      to { 
-        transform: translateY(110vh) rotate(360deg);
-        opacity: 0;
-      }
-    }
-
-    .pregunta {
-      margin: 30px 15px;
-      font-size: clamp(1.4rem, 4vw, 2rem);
-      color: #880e4f;
-      font-weight: bold;
-    }
-
-    footer {
-      margin: 25px 0 40px;
-      color: #880e4f;
-      font-size: clamp(1rem, 3vw, 1.4rem);
-    }
-
-    .music-control {
-      position: fixed;
-      bottom: 30px;
-      right: 30px;
-      background: linear-gradient(135deg, #ff6b9d, #ee9ca7);
-      color: white;
-      border: none;
-      padding: 15px 25px;
-      border-radius: 50px;
-      font-size: 1rem;
-      font-weight: bold;
-      cursor: pointer;
-      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
-      transition: all 0.3s ease;
-      z-index: 20;
-    }
-
-    .music-control:hover {
-      transform: scale(1.1);
-      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
-    }
-
-    .music-control:active {
-      transform: scale(0.95);
-    }
-
-    audio { 
-      display: none; 
-    }
-
-    @media (max-width: 768px) {
-      h1 {
-        margin-top: 15px;
-      }
-
-      .arbol-container {
-        height: 450px;
-      }
-
-      .contador-detallado {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      .music-control {
-        bottom: 20px;
-        right: 20px;
-        padding: 12px 20px;
-        font-size: 0.9rem;
-      }
-    }
-
-    @media (max-width: 480px) {
-      .arbol-container {
-        height: 400px;
-      }
-
-      .corazon {
-        font-size: 22px;
-      }
-
-      .contador-container {
-        margin: 20px 10px;
-        padding: 15px;
-      }
-    }/*.rama {
-  position: absolute;
-  width: 90px;
-  height: 18px;
-  background: linear-gradient(to right, #5a2e0f, #8b4513);
+/* CONTADOR */
+.contador {
+  background: white;
+  display: inline-block;
+  padding: 15px 30px;
   border-radius: 20px;
-  top: 260px;
-  left: 50%;
-  transform-origin: left center;
-  z-index: 1;
+  margin: 20px;
+  font-size: 1.5rem;
 }
 
-.rama-izq {
-  transform: translateX(-50%) rotate(-30deg);
+/* BOTÓN */
+.boton {
+  margin-top: 20px;
+  padding: 15px 30px;
+  font-size: 1.2rem;
+  background: #ff4d88;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: 0.3s;
 }
 
-.rama-der {
-  transform: translateX(-50%) rotate(30deg);
+.boton:hover {
+  transform: scale(1.1);
 }
 
-.rama-izq {
-  left: 90px;
-  transform: rotate(-30deg);
+/* FLORES */
+#flores-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
 }
 
-.rama-der {
-  right: 90px;
-  transform: rotate(30deg);
+.flor {
+  position: absolute;
+  font-size: 26px;
+  animation: caer 4s linear forwards;
 }
 
-  </style>/
+@keyframes caer {
+  0% {
+    transform: translateY(-50px) scale(0.5);
+    opacity: 0;
+  }
+  50% { opacity: 1; }
+  100% {
+    transform: translateY(100vh) scale(1.2);
+    opacity: 0;
+  }
+}
 
+/* MENSAJE FINAL */
+.oculto {
+  display: none;
+  font-size: 1.6rem;
+  color: #b3005e;
+  margin-top: 25px;
+  animation: aparecer 1s ease;
+}
+
+@keyframes aparecer {
+  from { opacity: 0; transform: scale(0.8); }
+  to { opacity: 1; transform: scale(1); }
+}
+</style>
 </head>
+
 <body>
-  
-  <h1>❤️ Para la mamas de mis futuros hijos ❤️</h1>
-  <div class="mensaje">Feliz San Valentín, te amo mi amor 💕</div>
 
-  <div class="contador-container">
-    <div class="contador" id="juntos">⏳ Días juntos</div>
-    <div class="contador-detallado">
-      <div class="tiempo-item">
-        <span class="tiempo-numero" id="dias">0</span>
-        <span class="tiempo-label">Días</span>
-      </div>
-      <div class="tiempo-item">
-        <span class="tiempo-numero" id="horas">0</span>
-        <span class="tiempo-label">Horas</span>
-      </div>
-      <div class="tiempo-item">
-        <span class="tiempo-numero" id="minutos">0</span>
-        <span class="tiempo-label">Minutos</span>
-      </div>
-      <div class="tiempo-item">
-        <span class="tiempo-numero" id="segundos">0</span>
-        <span class="tiempo-label">Segundos</span>
-      </div>
-    </div>
-  </div>
+<h1>❤️ Nuestro Amor ❤️</h1>
+<p class="mensaje">Te quiero 💕</p>
 
-<div class="arbol-container">
-  <div class="arbol">
-    <div class="copa" id="copa"></div>
+<div class="contador" id="contador"></div>
 
-    <div class="rama rama-izq"></div>
-    <div class="rama rama-der"></div>
+<button onclick="mostrarFlores()" class="boton">
+  🌸 Toca aquí
+</button>
 
-    <div class="tronco"></div>
-  </div>
+<div id="flores-container"></div>
+
+<div id="mensaje" class="oculto">
+  💖 Abigail, eres lo mejor que me ha pasado 💖<br><br>
+  ¿Quieres seguir conmigo para siempre? 💍
 </div>
 
-  
-  <div class="pregunta">Que este año me des un Hijo mamy 💍</div>
+<script>
+// CONTADOR
+const inicio = new Date("2023-02-14");
 
-  <footer>
-    Feliz San Valentín 💖<br>
-    Te amo con todo mi corazón ❤️
-  </footer>
+function actualizar() {
+  const hoy = new Date();
+  const dias = Math.floor((hoy - inicio) / (1000*60*60*24));
+  document.getElementById("contador").innerHTML =
+    "⏳ " + dias + " días juntos";
+}
+actualizar();
 
-  <button class="music-control" id="musicToggle">🎵 Reproducir Música</button>
+// FLORES
+function mostrarFlores() {
+  const contenedor = document.getElementById("flores-container");
 
-  <audio id="audio" loop>
-    <source src="https://cdn.pixabay.com/audio/2022/03/15/audio_9c7a98d9e1.mp3" type="audio/mpeg">
-  </audio>
-  
+  const emojis = ["🌸","🌹","💐","💖"];
 
-  <script>
-    const audioElement = document.getElementById('audio');
-    const musicButton = document.getElementById('musicToggle');
-    let isPlaying = false;
+  for (let i = 0; i < 35; i++) {
+    const flor = document.createElement("div");
+    flor.className = "flor";
+    flor.innerHTML = emojis[Math.floor(Math.random()*emojis.length)];
 
-    musicButton.addEventListener('click', () => {
-      if (isPlaying) {
-        audioElement.pause();
-        musicButton.textContent = '🎵 Reproducir Música';
-        isPlaying = false;
-      } else {
-        audioElement.play().catch(err => {
-          console.log('Auto-play bloqueado:', err);
-        });
-        musicButton.textContent = '⏸️ Pausar Música';
-        isPlaying = true;
-      }
-    });
+    flor.style.left = Math.random() * 100 + "vw";
+    flor.style.animationDuration = (Math.random() * 2 + 3) + "s";
 
-    const fechaInicio = new Date('2023-02-14');
-    const contadorJuntos = document.getElementById('juntos');
+    contenedor.appendChild(flor);
 
-    function actualizarContadores() {
-      const ahora = new Date();
-      const diff = ahora - fechaInicio;
-      const diasJuntos = Math.floor(diff / (1000 * 60 * 60 * 24));
-      contadorJuntos.innerHTML = `⏳ ${diasJuntos} días juntos`;
-
-      const dias = Math.floor(diff / (1000 * 60 * 60 * 24));
-      const horas = Math.floor((diff / (1000 * 60 * 60)) % 24);
-      const minutos = Math.floor((diff / 1000 / 60) % 60);
-      const segundos = Math.floor((diff / 1000) % 60);
-
-      document.getElementById('dias').textContent = String(dias).padStart(2, '0');
-      document.getElementById('horas').textContent = String(horas).padStart(2, '0');
-      document.getElementById('minutos').textContent = String(minutos).padStart(2, '0');
-      document.getElementById('segundos').textContent = String(segundos).padStart(2, '0');
-    }
-
-    actualizarContadores();
-    setInterval(actualizarContadores, 1000);
-
-    const copa = document.getElementById('copa');
-    
-    for (let i = 0; i < 150; i++) {
-      const corazon = document.createElement('div');
-      corazon.className = 'corazon';
-      corazon.innerHTML = '❤';
-
-      let x, y;
-      if (i < 60) {
-        const angle = (i / 60) * Math.PI * 2;
-        const radius = 80;
-        x = radius * Math.sin(angle) ** 3;
-        y = -(13 * Math.cos(angle) - 5 * Math.cos(2 * angle) - 2 * Math.cos(3 * angle) - Math.cos(4 * angle)) * 6;
-      } else {
-        x = (Math.random() - 0.5) * 160;
-        y = (Math.random() - 0.5) * 160;
-      }
-
-      corazon.style.left = (150 + x) + 'px';
-      corazon.style.top = (100 + y) + 'px';
-      corazon.style.animationDelay = Math.random() * 3 + 's';
-
-      corazon.addEventListener('click', (e) => {
-        e.stopPropagation();
-        corazon.classList.add('clicked');
-        crearLluviaLocal(e.clientX, e.clientY);
-        setTimeout(() => corazon.classList.remove('clicked'), 600);
-      });
-
-      copa.appendChild(corazon);
-    }
-
-    function crearLluvia() {
-      const c = document.createElement('div');
-      c.className = 'lluvia';
-      c.innerHTML = '❤';
-      c.style.left = Math.random() * 100 + 'vw';
-      c.style.animationDuration = (Math.random() * 3 + 4) + 's';
-      document.body.appendChild(c);
-      setTimeout(() => c.remove(), 7000);
-    }
-
-    function crearLluviaLocal(x, y) {
-      for (let i = 0; i < 5; i++) {
-        const c = document.createElement('div');
-        c.className = 'lluvia';
-        c.innerHTML = '❤';
-        c.style.left = x + 'px';
-        c.style.top = y + 'px';
-        c.style.animationDuration = (Math.random() * 2 + 2) + 's';
-        document.body.appendChild(c);
-        setTimeout(() => c.remove(), 4000);
-      }
-    }
-
-    setInterval(crearLluvia, 500);
-
-    document.body.addEventListener('click', () => {
-  if (!isPlaying) {
-    audioElement.play().then(() => {
-      musicButton.textContent = '⏸️ Pausar Música';
-      isPlaying = true;
-    }).catch(() => {});
+    setTimeout(() => flor.remove(), 4000);
   }
-}, { once: true });
 
-  </script>
+  setTimeout(() => {
+    document.getElementById("mensaje").style.display = "block";
+  }, 2000);
+}
+</script>
 
 </body>
 </html>
